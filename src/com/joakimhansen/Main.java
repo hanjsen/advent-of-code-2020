@@ -3,47 +3,55 @@ package com.joakimhansen;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Main {
     private static final File input = new File("/Users/jockehansen/workspace/advent-of-code-2020/input.txt");
     private static final ArrayList<String> inputRows = new ArrayList<>();
-    private static final ArrayList<Integer> minimumInstances = new ArrayList<>();
-    private static final ArrayList<Integer> maximumInstances = new ArrayList<>();
+    private static final ArrayList<Integer> firstPosition = new ArrayList<>();
+    private static final ArrayList<Integer> secondPosition = new ArrayList<>();
     private static final ArrayList<Character> keys = new ArrayList<>();
     private static final ArrayList<String> passwords = new ArrayList<>();
     private static Integer validPasswords = 0;
+    private static final Integer tobogganNoConceptOfIndexZero = 1;
 
     public static void main(String[] args) {
         try {
             parseFile();
             splitContent();
-            checkPassword();
+            validatePasswords();
             System.out.println("Number of valid passwords: " + validPasswords);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private static void checkPassword() {
+    private static void validatePasswords() {
         for (int i = 0; i < keys.size(); i++) {
-            int finalI = i;
-            int occurrences = (int) passwords.get(i).chars().filter(ch -> ch == keys.get(finalI)).count();
-            validate(occurrences, minimumInstances.get(i), maximumInstances.get(i));
-        }
-    }
+            char key = keys.get(i);
+            int first = firstPosition.get(i) - tobogganNoConceptOfIndexZero;
+            int second = secondPosition.get(i) - tobogganNoConceptOfIndexZero;
+            String password = passwords.get(i);
+            char charAtFirstPosition = password.charAt(first);
+            char charAtSecondPosition = password.charAt(second);
 
-    private static void validate(int occurrences, int minimum, int maximum) {
-        if (occurrences >= minimum && occurrences <= maximum){
-            validPasswords++;
+            if (charAtFirstPosition == key && charAtSecondPosition == key) {
+                System.out.println(charAtFirstPosition + " - " + charAtSecondPosition + " " + "{" + key + "}");
+            }
+            else if (charAtFirstPosition == key || charAtSecondPosition == key) {
+                validPasswords++;
+                System.out.println("VALID - " + charAtFirstPosition + " - " + charAtSecondPosition + " " + "{" + key + "}");
+            }
+            else {
+                System.out.println(charAtFirstPosition + " - " + charAtSecondPosition + " " + "{" + key + "}");
+            }
         }
     }
 
     private static void splitContent() {
-        for (int i = 0; i < inputRows.size(); i+=3) {
+        for (int i = 0; i < inputRows.size(); i += 3) {
             String[] occurrences = inputRows.get(i).split("-");
-            minimumInstances.add(Integer.parseInt(occurrences[0]));
-            maximumInstances.add(Integer.parseInt(occurrences[1]));
+            firstPosition.add(Integer.parseInt(occurrences[0]));
+            secondPosition.add(Integer.parseInt(occurrences[1]));
             keys.add(inputRows.get(i + 1).charAt(0));
             passwords.add(inputRows.get(i + 2));
         }
