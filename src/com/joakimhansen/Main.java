@@ -34,14 +34,10 @@ public class Main {
             char charAtFirstPosition = password.charAt(first);
             char charAtSecondPosition = password.charAt(second);
 
-            if (charAtFirstPosition == key && charAtSecondPosition == key) {
-                System.out.println(charAtFirstPosition + " - " + charAtSecondPosition + " " + "{" + key + "}");
-            }
-            else if (charAtFirstPosition == key || charAtSecondPosition == key) {
+            if (charAtFirstPosition == key ^ charAtSecondPosition == key) {
                 validPasswords++;
                 System.out.println("VALID - " + charAtFirstPosition + " - " + charAtSecondPosition + " " + "{" + key + "}");
-            }
-            else {
+            } else {
                 System.out.println(charAtFirstPosition + " - " + charAtSecondPosition + " " + "{" + key + "}");
             }
         }
