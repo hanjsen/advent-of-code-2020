@@ -3,33 +3,49 @@ package com.joakimhansen;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Main {
-    private static final ArrayList<Integer> expenseReport = new ArrayList<>();
     private static final File input = new File("/Users/jockehansen/workspace/advent-of-code-2020/input.txt");
+    private static final ArrayList<String> inputRows = new ArrayList<>();
+    private static final ArrayList<Integer> minimumInstances = new ArrayList<>();
+    private static final ArrayList<Integer> maximumInstances = new ArrayList<>();
+    private static final ArrayList<Character> keys = new ArrayList<>();
+    private static final ArrayList<String> passwords = new ArrayList<>();
+    private static Integer validPasswords = 0;
 
     public static void main(String[] args) {
         try {
             parseFile();
-            checkSumOfExpenses();
+            splitContent();
+            checkPassword();
+            System.out.println("Number of valid passwords: " + validPasswords);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private static void checkSumOfExpenses() {
-        for (int i = 0; i < expenseReport.size(); i++) {
-            int outerNumber = expenseReport.get(i);
+    private static void checkPassword() {
+        for (int i = 0; i < keys.size(); i++) {
+            int finalI = i;
+            int occurrences = (int) passwords.get(i).chars().filter(ch -> ch == keys.get(finalI)).count();
+            validate(occurrences, minimumInstances.get(i), maximumInstances.get(i));
+        }
+    }
 
-            for (int j = 1; j < expenseReport.size(); j++) {
-                int middleNumber = expenseReport.get(j);
+    private static void validate(int occurrences, int minimum, int maximum) {
+        if (occurrences >= minimum && occurrences <= maximum){
+            validPasswords++;
+        }
+    }
 
-                for (int k = 2; k < expenseReport.size(); k++) {
-                    int innerNumber = expenseReport.get(k);
-
-                    sumNumbers(outerNumber, middleNumber, innerNumber);
-                }
-            }
+    private static void splitContent() {
+        for (int i = 0; i < inputRows.size(); i+=3) {
+            String[] occurrences = inputRows.get(i).split("-");
+            minimumInstances.add(Integer.parseInt(occurrences[0]));
+            maximumInstances.add(Integer.parseInt(occurrences[1]));
+            keys.add(inputRows.get(i + 1).charAt(0));
+            passwords.add(inputRows.get(i + 2));
         }
     }
 
@@ -38,21 +54,8 @@ public class Main {
         Scanner scanner = new Scanner(fileInputStream);
 
         while (scanner.hasNext()) {
-            expenseReport.add(Integer.parseInt(scanner.next()));
+            inputRows.add(scanner.next());
         }
     }
 
-    private static void sumNumbers(int outerNumber, int middleNumber, int innerNumber) {
-        int expense = outerNumber + middleNumber + innerNumber;
-        if (expense == 2020) {
-            multiply(outerNumber, middleNumber, innerNumber);
-            System.exit(1);
-        }
-    }
-
-    private static void multiply(int first, int second, int third) {
-        System.out.println("** WIN **");
-        System.out.println("" + first + ", " + second + ", " + third);
-        System.out.println(first * second * third);
-    }
 }
