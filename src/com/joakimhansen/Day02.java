@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DayTwo {
+public class Day02 {
 
-    private final File input = new File("/Users/jockehansen/workspace/advent-of-code-2020/input-daytwo.txt");
+    private final File input = new File("./input-d02.txt");
     private final ArrayList<String> inputRows = new ArrayList<>();
     private final ArrayList<Integer> firstPosition = new ArrayList<>();
     private final ArrayList<Integer> secondPosition = new ArrayList<>();
@@ -14,7 +14,7 @@ public class DayTwo {
     private final ArrayList<String> passwords = new ArrayList<>();
     private Integer validPasswords = 0;
 
-    public DayTwo() {
+    public Day02() {
     }
 
     public void run() {

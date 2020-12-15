@@ -8,9 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class DayThree {
+public class Day03 {
 
-    private final File input = new File("/Users/jockehansen/workspace/advent-of-code-2020/input-daythree.txt");
+    private final File input = new File("./input-d03.txt");
     private final List<String> slope = new ArrayList<>();
     private final List<Integer> horizontalAttackAngle = Arrays.asList(1, 3, 5, 7, 1);
     private final List<Integer> verticalAttackAngle = Arrays.asList(1, 1, 1, 1, 2);
@@ -19,7 +19,7 @@ public class DayThree {
     private int slopeWidth;
     private int treesHit;
 
-    public DayThree() {
+    public Day03() {
     }
 
     public void run() {

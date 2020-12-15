@@ -4,15 +4,15 @@ import javax.naming.directory.InvalidAttributesException;
 import java.io.*;
 import java.util.*;
 
-public class DayFour {
+public class Day04 {
 
-    private final File file = new File("/Users/jockehansen/workspace/advent-of-code-2020/input-dayfour.txt");
+    private final File file = new File("./input-d04.txt");
     private final List<String> input = new ArrayList<>();
     private final List<Map<String, String>> passports = new ArrayList<>();
     private final List<String> validEyeColor = Arrays.asList("amb", "blu", "brn", "gry", "grn", "hzl", "oth");
     private int validPassports;
 
-    public DayFour() {
+    public Day04() {
     }
 
     public void run() {
