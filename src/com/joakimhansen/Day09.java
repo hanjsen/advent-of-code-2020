@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Day09 {
 
-    private final File file = new File("./input-d09.txt");
+    private final File file = new File("./input/d09.txt");
     private final ArrayList<Long> input = new ArrayList<>();
     private final int ENCRYPTION_WEAKNESS = 18272118;
 

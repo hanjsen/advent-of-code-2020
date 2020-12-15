@@ -8,7 +8,7 @@ import java.util.TreeSet;
 
 public class Day10 {
 
-    private final File file = new File("./input-d10.txt");
+    private final File file = new File("./input/d10.txt");
     private final TreeSet<Integer> input = new TreeSet<>();
     private List<Integer> ray;
 

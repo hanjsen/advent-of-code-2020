@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Day02 {
 
-    private final File input = new File("./input-d02.txt");
+    private final File input = new File("./input/d02.txt");
     private final ArrayList<String> inputRows = new ArrayList<>();
     private final ArrayList<Integer> firstPosition = new ArrayList<>();
     private final ArrayList<Integer> secondPosition = new ArrayList<>();

@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Day15 {
 
-    private final File file = new File("./input-d15.txt");
+    private final File file = new File("./input/d15.txt");
     private final ArrayList<Integer> input = new ArrayList<>();
 
     public void run() {

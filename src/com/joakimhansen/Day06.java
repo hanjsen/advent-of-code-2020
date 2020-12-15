@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Day06 {
 
-    private final File file = new File("./input-d06.txt");
+    private final File file = new File("./input/d06.txt");
     private final List<String> input = new ArrayList<>();
     private int declarationCounter;
     private int secondDeclarationCounter;

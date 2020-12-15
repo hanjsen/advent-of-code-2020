@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Day11 {
 
-    private final File file = new File("./input-d11.txt");
+    private final File file = new File("./input/d11.txt");
     private char[][] matrix;
     private char[][] swaps;
 

@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class Day14 {
 
-    private final File file = new File("./input-d14.txt");
+    private final File file = new File("./input/d14.txt");
     private final ArrayList<String> operations = new ArrayList<>();
     private final HashMap<Integer, String> memory = new HashMap<>();
     private String currentBitmask;

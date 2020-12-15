@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Day05 {
 
-    private final File file = new File("./input-d05.txt");
+    private final File file = new File("./input/d05.txt");
     private final List<String> input = new ArrayList<>();
     private final List<Integer> seatIDs = new ArrayList<>();
 

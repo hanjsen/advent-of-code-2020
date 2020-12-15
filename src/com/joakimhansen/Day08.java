@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Day08 {
 
-    private final File file = new File("./input-d08.txt");
+    private final File file = new File("./input/d08.txt");
     private final ArrayList<String> operations = new ArrayList<>();
     private final ArrayList<Integer> arguments = new ArrayList<>();
     private ArrayList<Integer> executedOperations;

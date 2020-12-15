@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Day04 {
 
-    private final File file = new File("./input-d04.txt");
+    private final File file = new File("./input/d04.txt");
     private final List<String> input = new ArrayList<>();
     private final List<Map<String, String>> passports = new ArrayList<>();
     private final List<String> validEyeColor = Arrays.asList("amb", "blu", "brn", "gry", "grn", "hzl", "oth");

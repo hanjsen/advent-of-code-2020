@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Day07 {
 
-    private final File file = new File("./input-d07.txt");
+    private final File file = new File("./input/d07.txt");
     private final Map<String, String[]> input = new HashMap<>();
     private final TreeSet<String> canHoldShinyGoldBag = new TreeSet<>();
     private int totalBags = 0;

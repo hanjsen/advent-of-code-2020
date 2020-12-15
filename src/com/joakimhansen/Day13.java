@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Day13 {
 
-    private final File file = new File("./input-d13.txt");
+    private final File file = new File("./input/d13.txt");
     private final List<String> inputWithEmptySlots = new ArrayList<>();
     private final List<Integer> cleanInput = new ArrayList<>();
     private int timestamp;

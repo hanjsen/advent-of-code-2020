@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Day12 {
 
-    private final File file = new File("./input-d12.txt");
+    private final File file = new File("./input/d12.txt");
     private final List<String> input = new ArrayList<>();
     private Map<String, Integer> manhattanDistance = new HashMap<>();
 
