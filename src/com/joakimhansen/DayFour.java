@@ -6,7 +6,7 @@ import java.util.*;
 
 public class DayFour {
 
-    private final File file = new File("/Users/jockehansen/workspace/advent-of-code-2020/input-dayfour.txt");
+    private final File file = new File("/Users/jockehansen/workspace/advent-of-code-2020/input-04.txt");
     private final List<String> input = new ArrayList<>();
     private final List<Map<String, String>> passports = new ArrayList<>();
     private final List<String> validEyeColor = Arrays.asList("amb", "blu", "brn", "gry", "grn", "hzl", "oth");

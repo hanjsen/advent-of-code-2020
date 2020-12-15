@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class DayTwo {
 
-    private final File input = new File("/Users/jockehansen/workspace/advent-of-code-2020/input-daytwo.txt");
+    private final File input = new File("/Users/jockehansen/workspace/advent-of-code-2020/input-02.txt");
     private final ArrayList<String> inputRows = new ArrayList<>();
     private final ArrayList<Integer> firstPosition = new ArrayList<>();
     private final ArrayList<Integer> secondPosition = new ArrayList<>();
