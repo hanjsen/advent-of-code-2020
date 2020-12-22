@@ -1,63 +1,63 @@
 package com.joakimhansen;
 
-import com.joakimhansen.utils.Tile;
-import com.joakimhansen.utils.TileUtil;
-
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
-public class Day20 {
+public class Day22 {
 
-    private final File file = new File("./input/d20.txt");
-    private final TileUtil tileUtil = new TileUtil();
+    private final File file = new File("./input/d22.txt");
+    private final LinkedList<Integer> p1 = new LinkedList<>();
+    private final LinkedList<Integer> p2 = new LinkedList<>();
 
     public void run() {
-        parseFile();
+        parseInput();
         partOne();
         partTwo();
     }
 
     private void partTwo() {
-        tileUtil.buildMatrix();
-        tileUtil.removeAllFrames();
-        tileUtil.megaMerge();
-        tileUtil.findMonster();
     }
 
     private void partOne() {
-        tileUtil.matchTiles();
-        List<Tile> corners = tileUtil.getCornerTiles();
-        long solution = 0;
-        for (Tile t : corners) {
-            if (solution == 0) {
-                solution = t.getID();
-            } else {
-                solution *= t.getID();
+        while (!p1.isEmpty() && !p2.isEmpty()) {
+            int p1card = p1.poll();
+            int p2card = p2.poll();
+            if (p1card > p2card) {
+                p1.add(p1card);
+                p1.add(p2card);
+            } else if (p2card > p1card) {
+                p2.add(p2card);
+                p2.add(p1card);
             }
         }
-        System.out.println("Part one solution " + solution);
+
+        Deque<Integer> winningPlayer = new LinkedList<>(p1);
+        winningPlayer.addAll(p2);
+        int score = 0;
+        while (!winningPlayer.isEmpty()){
+            score = score + winningPlayer.poll() * (winningPlayer.size()+1);
+        }
+        System.out.println(score);
     }
 
-    private void parseFile() {
-        Scanner scanner;
+    private void parseInput() {
         try {
-            scanner = new Scanner(file);
-            Tile t = new Tile();
-            List<String> tileContent = new ArrayList<>();
+            Scanner scanner = new Scanner(file);
+            List<Integer> temp = new ArrayList<>();
             while (scanner.hasNext()) {
                 String nextLine = scanner.nextLine();
-                if (nextLine.equalsIgnoreCase("")) {
-                    t.setContent(tileContent);
-                    t = new Tile();
-                    tileContent = new ArrayList<>();
-                } else if (nextLine.contains("Tile")) {
-                    t.setID(Integer.parseInt(nextLine.split(" ")[1].replace(":", "").trim()));
-                    tileUtil.addTile(t);
-                } else {
-                    tileContent.add(nextLine);
+                if (!nextLine.contains("Player") && !nextLine.equalsIgnoreCase("")) {
+                    temp.add(Integer.parseInt(nextLine));
                 }
             }
-            t.setContent(tileContent);
+            for (int i = 0; i < temp.size(); i++) {
+                if (i < temp.size() / 2) {
+                    p1.add(temp.get(i));
+                } else {
+                    p2.add(temp.get(i));
+                }
+            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
